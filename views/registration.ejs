@@ -1,0 +1,103 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<div>
+  	<div class="header mb-3 d-flex">
+    	<h1 class="mx-auto">Smart Online Investements</h1>
+  	</div>
+
+  	<form class="container">
+        <div class="form-group">
+            <div class="d-flex row">
+                <div class="col-6">
+                    <label for="emailControlInput">Email address</label>
+                    <input type="email" class="form-control" id="emailControlInput" placeholder="name@example.com">
+                </div>
+                <div class="col-6">
+                <label for="phoneControlInput">Phone number</label>
+                <input type="phone" class="form-control" id="phoneControlInput" placeholder="+357">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex row">
+                <div class="col-6">
+                    <label for="dateBirthControlInput">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateBirthControlInput" placeholder="31/12/1990">
+                </div>
+                <div class="col-6">
+                <label for="placeBirthControlInput">Place of Birth</label>
+                <input type="text" class="form-control" id="placeBirthControlInput" placeholder="Limassol">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex row">
+                <div class="col-6">
+                    <label for="companyControlInput">Company name</label>
+                    <input type="text" class="form-control" id="companyControlInput" placeholder="Your company name">
+                </div>
+                <div class="col-6">
+                    <label for="jobControlInput">Field of work</label>
+                    <input type="text" class="form-control" id="jobControlInput" placeholder="Filed of your occupation">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="savingsFormControlSelect1">Monthly savings (in EUR)</label>
+            <select class="form-control" id="savingsFormControlSelect1">
+            <option>&#60;500</option>
+            <option>500-2000</option>
+            <option>2000-5000</option>
+            <option>5000-10000</option>
+            <option>&#62;10000</option>
+            </select>
+        </div>
+        <div class="form-group">
+         <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" id="opt1" value="">Option 1
+            </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" id="opt2" value="">Option 2
+            </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" id="opt3" value="">Option 3
+            </label>
+            </div> 
+        </div>
+        <div class="form-group">
+            <label for="stocksControlSelect">What type of stocks are you invetested in?</label>
+            <select multiple class="form-control" id="stocksControlSelect">
+                <option>NIKE INC</option>
+                <option>APPLE INC</option>
+                <option>TESLA INC</option>
+                <option>YANDEX N.V.</option>
+                <option>BANK OF AMERICA CORP</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="commentFormControlTextarea">Any additionan info</label>
+            <textarea class="form-control" id="commentFormControlTextarea" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary col-12 mx-auto" 
+                onclick="location.href 
+                = '/finish_registration?email=' + document.getElementById('emailControlInput').value 
+                + '&phone='       + document.getElementById('phoneControlInput').value 
+                + '&birth_date='  + document.getElementById('dateBirthControlInput').value 
+                + '&birth_place=' + document.getElementById('placeBirthControlInput').value
+                + '&company='     + document.getElementById('companyControlInput').value
+                + '&job='         + document.getElementById('jobControlInput').value
+                + '&savings='     + document.getElementById('savingsFormControlSelect1').value
+                + '&stocks='      + document.getElementById('stocksControlSelect').value
+                + '&opt1='        + document.getElementById('opt1').checked
+                + '&opt2='        + document.getElementById('opt2').checked
+                + '&opt3='        + document.getElementById('opt3').checked">
+            Sumbit
+        </button>
+    </form>
+</div>

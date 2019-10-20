@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<div style="width: 100%; text-align: center">
+    <div class="header mb-3">
+    	<h1>Smart Online Investements</h1>
+  	</div>
+
+    <div class="container mb-3">
+        <h1>Transaction details <%= transfer_data.stocks %></h1>
+        <h4 class="mb-3">
+            Details for Transaction: <%= payment_data.paymentId %>
+        </h4>
+        <p>
+            <strong> Transaction details: </strong> <%= payment_data.paymentDetails %>
+        </p>
+        <p>
+            <strong> Transaction status: </strong> Approved 
+        </p>
+        <p class="mb-3">
+            <strong> <%= payment_data.status.description %></strong>
+        </p>
+        <hr>
+        <p>
+            <strong> Investor ID: </strong> <%= payment_data.creditor.accountId %>
+        </p>
+        <p class="mb-3">
+            <strong> Amount: </strong>  <%= payment_data.transactionAmount.amount %> <%= payment_data.transactionAmount.currency %>
+        </p>
+        <hr>
+        <p>
+            <strong> Transaction execution date: </strong> <%= payment_data.executionDate %>
+        </p>
+        <p class="mb-3">
+            <strong> Transaction value date: </strong> <%= payment_data.valueDate %>
+        </p>
+        <hr>
+        <button class="btn btn-primary" onclick="location.href = '/'">Go back</button>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<div style="width: 100%; text-align: center">
+    <div class="header mb-3">
+        <h1>Smart Online Investements</h1>
+    </div>
+
+    <div class="container mb-3">
+        <button class="btn btn-primary mb-3" onclick="location.href = '/'">Go back</button>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col" class="text-center">Investor ID</th>
+                <th scope="col" class="text-center">NIKE INC</th>
+                <th scope="col" class="text-center">APPLE INC</th>
+                <th scope="col" class="text-center">TESLA INC</th>
+                <th scope="col" class="text-center">YANDEX N.V.</th>
+                <th scope="col" class="text-center">BANK OF AMERICA CORP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (investement in investments_summary) { %>
+                <tr>
+                    <th scope="row" class="text-center"><%=investments_summary[investement].accID%></th>
+                    <td class="text-center"><%=investments_summary[investement]['NIKE INC']%></td>
+                    <td class="text-center"><%=investments_summary[investement]['APPLE INC']%></td>
+                    <td class="text-center"><%=investments_summary[investement]['TESLA INC']%></td>
+                    <td class="text-center"><%=investments_summary[investement]['YANDEX N.V.']%></td>
+                    <td class="text-center"><%=investments_summary[investement]['BANK OF AMERICA CORP']%></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

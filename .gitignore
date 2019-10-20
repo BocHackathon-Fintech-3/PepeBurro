@@ -1,0 +1,4 @@
+node_modules/
+api_cache.json
+*.conf
+package-lock.json

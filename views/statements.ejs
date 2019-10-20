@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<div style="width: 100%; text-align: center">
+    <div class="header mb-3">
+        <h1>Smart Online Investements</h1>
+    </div>
+    <div style="width: 100%; text-align: center">
+        <h2 class="mb-3">Available accounts</h2>
+        <h4 class="mb-3">Statements for account with id: <%= account_id %> </h4>
+        <button type="button" class="btn btn-primary mb-3" onclick="location.href = '/'">Go back</button>
+
+        <% for (transaction of statements) { %>
+
+        <!-- <p> <%= JSON.stringify(transaction) %> </p> -->
+
+            <p><strong> Transaction ID: </strong> <%= transaction.payment_data.paymentId %> </p>
+            <p><strong> Transaction amount: </strong> <%= transaction.payment_data.transactionAmount.amount %> <%= transaction.payment_data.transactionAmount.currency %> </p>
+            <p><strong> Transaction description: </strong> <%= transaction.payment_auth.description %> </p>
+            <!-- <p><strong> Transaction type: </strong> <%= transaction.transactionType %> </p> -->
+            <p><strong> Transaction merchant name: </strong> <%= transaction.payment_data.debtor.name %> </p>
+            <p><strong> Transaction value date: </strong> <%= transaction.payment_data.valueDate %> </p>
+            <p><strong> Stocks name: </strong> <%= transaction.transfer_data.stocks %> </p>
+        
+        <hr>
+
+        <% } %>
+
+        <br>
+    </div>
+</div>

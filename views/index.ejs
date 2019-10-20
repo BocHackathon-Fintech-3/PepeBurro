@@ -1,0 +1,106 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<div style="width: 100%; text-align: center">
+    <div class="header">
+        <h1>Smart Online Investements</h1>
+    </div>
+
+    <% if(boc_api.subStatus.status == "ACTV" && boc_api.subStatus.selectedAccounts.length > 0){ %>
+
+    <br>
+        <% if(typeof additional_info != "undefined" && additional_info.defined){ %>
+        <button type="button" class="btn btn-primary mb-4 mr-2" onclick="location.href = '/trading_algos'">
+            Get available trading algorythms
+        </button>
+        <button type="button" class="btn btn-primary mb-4 ml-2" onclick="location.href = '/investments'">
+            Investements Summary
+        </button>
+        <% } else { %>
+        <button type="button" class="btn btn-primary mb-4" onclick="location.href = '/registration'">
+            Finish account setup
+        </button>
+        <% } %>
+    <hr>
+
+    <br>
+
+    <div class="container">
+        <form class="mb-5">
+            <div class="form-group">
+                <div class="d-flex">
+                    <label class="col-3 label-form" for="accountID">
+                        Account ID:
+                    </label>
+                    <input class="form-control" type="text" id="accountId" />
+                </div>
+                <div class="d-flex mt-5">
+                    <button type="button" class="btn btn-primary col-2 mx-3 ml-auto" onclick="location.href = '/accounts/' + document.getElementById('accountId').value">
+                        Get account details
+                    </button>
+                    <button type="button" class="btn btn-primary col-2 mx-3" onclick="location.href = '/accounts/' + document.getElementById('accountId').value + '/balances'">
+                        Get account balances
+                    </button>
+                    <button type="button" class="btn btn-primary col-2 mx-3 mr-auto" onclick="location.href = '/accounts/' + document.getElementById('accountId').value + '/statements'">
+                        Get account statements
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <form class="my-5">
+            <div class="form-group">
+                <div class="d-flex mb-3">
+                    <label class="col-3 label-form" for="creditorAccountID">
+                        Investor's AccountID:
+                    </label>
+                    <input class="form-control" type="text" id="creditorIban"/>
+                </div>
+                <div class="d-flex mb-3">
+                    <label class="col-3 label-form" for="Amount">
+                        Amount:
+                    </label>
+                    <input class="form-control" type="text" id="amount"/>
+                     <div class="form-group col-3 pr-0">
+                        <select class="form-control" id="stockID">
+                            <option <% if (additional_info.stocks === "NIKE INC" ) {%>selected="selected"<%}%>>NIKE INC</option>
+                            <option <% if (additional_info.stocks === "APPLE INC" ) {%>selected="selected"<%}%>>APPLE INC</option>
+                            <option <% if (additional_info.stocks === "TESLA INC" ) {%>selected="selected"<%}%>>TESLA INC</option>
+                            <option <% if (additional_info.stocks === "YANDEX N.V." ) {%>selected="selected"<%}%>>YANDEX N.V.</option>
+                            <option <% if (additional_info.stocks === "BANK OF AMERICA CORP" ) {%>selected="selected"<%}%>>BANK OF AMERICA CORP</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary col-3 mx-auto" onclick="location.href = '/pay?debtorIban=351012345674&creditorIban=' + document.getElementById('creditorIban').value + '&amount=' + document.getElementById('amount').value + '&stocks=' + document.getElementById('stockID').value">
+                    Pay
+                </button>
+            </div>
+        </form>
+        <hr/>
+        <form class="my-5">
+            <div class="form-group">
+                <div class="d-flex mb-3">
+                    <label class="col-3 label-form" for="paymentID">
+                        Investement ID:
+                    </label>
+                    <input class="form-control" placeholder="If no input the last InvestmentID is taken" type="text" id="paymentId"/>
+                </div>
+                <button type="button" class="btn btn-primary col-3 mx-auto" onclick="location.href = '/payment/' + document.getElementById('paymentId').value">
+                    Get Investement Information
+                </button>
+            </div>
+        </form>
+        <hr/> 
+        <div class="my-5 row">
+            <button type="button" class="btn btn-primary col-3 mx-auto" onclick="location.href = '/get_market_data'">Get Market Data</button>
+        </div>
+    </div>
+    
+
+    <% } else { %>
+
+    <button onclick="location.href = '<%= boc_api.get_login_url() %>'">Connect to your BOC Account</button>
+
+    <% } %>
+</div>
