@@ -57,20 +57,13 @@ router.get('/get_market_data', function (req, res, next) {
     } else {
         res.status(500).send('BoC SDK not initialized')
     }
-    // if(boc_api && boc_api.subStatus.status === "ACTV" && boc_api.subStatus.selectedAccounts.length > 0){
-    //     res.send(JSON.stringify(boc_api))
-    // }else{
-    //     res.send("<a href='"+boc_api.get_login_url()+"'>Connect a BOC Account</a>");
-    // }
+
 
 })
 
 router.get("/getAccountsInSub", function (req, res, next) {
     if (req.query.accountId) {
         boc_api.getSubForAccount(req.query.accountId).then(subForAccount => {
-            // res.render('accounts', {
-            //     subForAccount: subForAccount
-            // })
             res.send(subForAccount)
         })
     } else {
@@ -79,6 +72,20 @@ router.get("/getAccountsInSub", function (req, res, next) {
             error: 'missing information',
         })
     }
+
+})
+
+router.get('/registration', function (req, res, next) {
+    if (boc_api) {
+        boc_api.get_apple().then(data =>{
+            res.render('registration', {
+            });
+        })
+        
+    } else {
+        res.status(500).send('BoC SDK not initialized')
+    }
+
 
 })
 
@@ -177,7 +184,7 @@ router.get('/investments', function (req, res, next) {
                 var transferData = userSnapshot.val().transfer_data;
                 var accountID = paymentData.debtor.accountId;
                 var stocks = transferData.stocks;
-                console.log(paymentData.transactionAmount.amount);
+                // console.log(paymentData.transactionAmount.amount);
                 if (typeof tableOfInvestments[accountID] === "undefined") {
                     tableOfInvestments[accountID] = {
                         [stocks]: parseInt(0),
@@ -190,9 +197,42 @@ router.get('/investments', function (req, res, next) {
                 }
                 tableOfInvestments[accountID][stocks]  = tableOfInvestments[accountID][stocks] + parseInt(paymentData.transactionAmount.amount);
             });
-            console.log(tableOfInvestments);
+            tableOfInvestments.total = [];
+            tableOfStocks = [];
+            var nikeSum = 0;
+            var appleSum = 0;
+            var teslaSum = 0;
+            var yandexSum = 0;
+            var bankSum = 0;
+            for (investment in tableOfInvestments) {
+                var sum = 0;
+                if (typeof tableOfInvestments[investment]['NIKE INC'] === "undefined") {
+                    continue
+                }
+                sum += tableOfInvestments[investment]['NIKE INC'];
+                nikeSum += tableOfInvestments[investment]['NIKE INC'];
+                sum += tableOfInvestments[investment]['APPLE INC'];
+                appleSum += tableOfInvestments[investment]['APPLE INC'];
+                sum += tableOfInvestments[investment]['TESLA INC'];
+                teslaSum += tableOfInvestments[investment]['TESLA INC'];
+                sum += tableOfInvestments[investment]['YANDEX N.V.'];
+                yandexSum += tableOfInvestments[investment]['YANDEX N.V.'];
+                sum += tableOfInvestments[investment]['BANK OF AMERICA CORP'];
+                bankSum += tableOfInvestments[investment]['BANK OF AMERICA CORP'];
+                console.log(nikeSum);
+                tableOfInvestments.total[investment] = sum;
+
+            }
+            tableOfStocks.push(nikeSum)
+            tableOfStocks.push(appleSum)
+            tableOfStocks.push(teslaSum)
+            tableOfStocks.push(yandexSum)
+            tableOfStocks.push(bankSum)
+            console.log(tableOfStocks);
             res.render('investments', {
-                investments_summary: tableOfInvestments
+                investments_summary: tableOfInvestments,
+                stocks: tableOfStocks
+            
             })
         }
     }, function (errorObject) {

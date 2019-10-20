@@ -54,19 +54,27 @@
             </select>
         </div>
         <div class="form-group">
+        <label class="form-check-label">
+            <h3>Investements interest:</h3>
+        </label>
          <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" id="opt1" value="">Option 1
+                <input type="checkbox" class="form-check-input" id="opt1" value="">Saving for retirement
             </label>
             </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" id="opt2" value="">Option 2
+                <input type="checkbox" class="form-check-input" id="opt2" value="">Buying a home
             </label>
             </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" id="opt3" value="">Option 3
+                <input type="checkbox" class="form-check-input" id="opt3" value="">Feeling financially secure
+            </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" id="opt4" value="">Save for your children’s education
             </label>
             </div> 
         </div>
@@ -96,7 +104,8 @@
                 + '&stocks='      + document.getElementById('stocksControlSelect').value
                 + '&opt1='        + document.getElementById('opt1').checked
                 + '&opt2='        + document.getElementById('opt2').checked
-                + '&opt3='        + document.getElementById('opt3').checked">
+                + '&opt3='        + document.getElementById('opt3').checked
+                + '&opt4='        + document.getElementById('opt4').checked">
             Sumbit
         </button>
     </form>

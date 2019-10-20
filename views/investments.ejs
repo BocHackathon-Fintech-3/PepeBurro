@@ -19,10 +19,11 @@
                 <th scope="col" class="text-center">TESLA INC</th>
                 <th scope="col" class="text-center">YANDEX N.V.</th>
                 <th scope="col" class="text-center">BANK OF AMERICA CORP</th>
+                <th scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
-                <% for (investement in investments_summary) { %>
+                <% for (investement in investments_summary) { if(typeof investments_summary.total != "undefinded") { %>
                 <tr>
                     <th scope="row" class="text-center"><%=investments_summary[investement].accID%></th>
                     <td class="text-center"><%=investments_summary[investement]['NIKE INC']%></td>
@@ -30,8 +31,18 @@
                     <td class="text-center"><%=investments_summary[investement]['TESLA INC']%></td>
                     <td class="text-center"><%=investments_summary[investement]['YANDEX N.V.']%></td>
                     <td class="text-center"><%=investments_summary[investement]['BANK OF AMERICA CORP']%></td>
+                    <td class="text-center"><%=investments_summary.total[investement]%></td>
                 </tr>
-                <% } %>
+                <%} } %>
+                <tr>
+                    <th scope="row" class="text-center">Total</th>
+                    <td class="text-center"><%=stocks[0]%>/1000</td>
+                    <td class="text-center"><%=stocks[1]%>/3000</td>
+                    <td class="text-center"><%=stocks[2]%>/500</td>
+                    <td class="text-center"><%=stocks[3]%>/1500</td>
+                    <td class="text-center"><%=stocks[4]%>/10000</td>
+                    <td class="text-center"><%=investments_summary[investement]%></td>
+                </tr>
             </tbody>
         </table>
     </div>
